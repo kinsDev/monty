@@ -3,46 +3,57 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer value
- * @prev: points to the previous element
- * @next: points to the next element
+ * struct stack_s - Doubly linked list representation of a stack or queue
+ * @n: Integer value
+ * @prev: Points to the previous element of the stack or queue
+ * @next: Points to the next element of the stack or queue
+ *
+ * Description: Node structure for a stack or queue
  */
 typedef struct stack_s
 {
-    int n;
-    struct stack_s *prev;
-    struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
- * struct bus_s - variables - args, file, line content
- * @arg: value
- * @file: pointer to monty file
- * @content: line content
- * @lifi: flag to change stack <-> queue
+ * struct bus_s - Carries values throughout the program
+ * @arg: Value
+ * @file: Pointer to Monty file
+ * @content: Line content
+ * @lifi: Flag to change between stack and queue behavior
+ *
+ * Description: Structure to pass variables through the program
  */
 typedef struct bus_s
 {
-    char *arg;
-    FILE *file;
-    char *content;
-    int lifi;
-} bus_t;
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+}  bus_t;
 
 extern bus_t bus;
 
 /**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
+ * struct instruction_s - Opcode and its corresponding function
+ * @opcode: The opcode
+ * @f: Function to handle the opcode
+ *
+ * Description: Structure to associate an opcode with its function
  */
 typedef struct instruction_s
 {
-    char *opcode;
-    void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
