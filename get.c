@@ -38,7 +38,7 @@ int get_opc(stack_t **stack, char *arg, char *val, int line_number)
                 if (_isdigit(val) == 1)
                     value = atoi(val);
                 else
-                    return (1); // Return if the value is not a digit
+                    return (1); /* Return if the value is not a digit */
             }
             op[i].f(stack, (unsigned int)line_number);
             break;
@@ -46,7 +46,7 @@ int get_opc(stack_t **stack, char *arg, char *val, int line_number)
         i++;
     }
     if (!op[i].opcode)
-        return (-1); // Return if no matching opcode is found
+        return (-1); /* Return if no matching opcode is found */
 
     return (0);
 }
